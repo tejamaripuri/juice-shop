@@ -1,29 +1,32 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
 const chai = require('chai')
 const expect = chai.expect
+const chaiAsPromised = require('chai-as-promised')
+chai.use(chaiAsPromised)
 
 describe('webhook', () => {
   const webhook = require('../../lib/webhook')
 
   const challenge = {
-    key: 'key'
+    key: 'key',
+    name: 'name'
   }
 
   describe('notify', () => {
     it('fails when no webhook URL is provided via environment variable', () => {
-      expect(() => webhook.notify(challenge)).to.throw('options.uri is a required argument')
+      expect(webhook.notify(challenge)).to.eventually.throw('options.uri is a required argument')
     })
 
     it('fails when supplied webhook is not a valid URL', () => {
-      expect(() => webhook.notify(challenge, 'localhorst')).to.throw('Invalid URI "localhorst"')
+      expect(webhook.notify(challenge, 'localhorst')).to.eventually.throw('Invalid URI "localhorst"')
     })
 
     it('submits POST with payload to existing URL', () => {
-      expect(() => webhook.notify(challenge, 'https://webhook.site/f69013b6-c475-46ed-973f-aa07e5e573a3')).to.not.throw()
+      expect(webhook.notify(challenge, 'https://enmmrmqnft1o.x.pipedream.net')).to.eventually.not.throw()
     })
   })
 })

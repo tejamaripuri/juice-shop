@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -8,6 +8,7 @@ import { SlideshowModule } from 'ng-simple-slideshow'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 
 import { AboutComponent } from './about.component'
+import { MatCardModule } from '@angular/material/card'
 
 xdescribe('AboutComponent', () => { // FIXME https://github.com/dockleryxk/ng-simple-slideshow/issues/70
   let component: AboutComponent
@@ -18,7 +19,8 @@ xdescribe('AboutComponent', () => { // FIXME https://github.com/dockleryxk/ng-si
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-        SlideshowModule
+        SlideshowModule,
+        MatCardModule
       ],
       declarations: [ AboutComponent ]
     })

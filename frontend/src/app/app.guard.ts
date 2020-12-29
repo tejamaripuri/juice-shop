@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -59,7 +59,7 @@ export class AdminGuard implements CanActivate {
 
 @Injectable()
 export class AccountingGuard implements CanActivate {
-  constructor (private router: Router, private loginGuard: LoginGuard) {}
+  constructor (private loginGuard: LoginGuard) {}
 
   canActivate () {
     let payload = this.loginGuard.tokenDecode()

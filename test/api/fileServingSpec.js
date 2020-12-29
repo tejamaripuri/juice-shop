@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -23,18 +23,18 @@ describe('Server', () => {
     return frisby.get(URL)
       .expect('status', 200)
       .expect('header', 'content-type', /text\/html/)
-      .expect('bodyContains', 'main-es2015.js')
-      .expect('bodyContains', 'runtime-es2015.js')
-      .expect('bodyContains', 'polyfills-es2015.js')
+      .expect('bodyContains', 'main-es2018.js')
+      .expect('bodyContains', 'runtime-es2018.js')
+      .expect('bodyContains', 'polyfills-es2018.js')
   })
 
   it('GET responds with index.html when visiting application URL with any path', () => {
     return frisby.get(URL + '/whatever')
       .expect('status', 200)
       .expect('header', 'content-type', /text\/html/)
-      .expect('bodyContains', 'main-es2015.js')
-      .expect('bodyContains', 'runtime-es2015.js')
-      .expect('bodyContains', 'polyfills-es2015.js')
+      .expect('bodyContains', 'main-es2018.js')
+      .expect('bodyContains', 'runtime-es2018.js')
+      .expect('bodyContains', 'polyfills-es2018.js')
   })
 
   it('GET a restricted file directly from file system path on server via Directory Traversal attack loads index.html instead', () => {
@@ -50,6 +50,11 @@ describe('Server', () => {
   })
 
   it('GET serves a security.txt file', () => {
+    return frisby.get(URL + '/security.txt')
+      .expect('status', 200)
+  })
+
+  it('GET serves a security.txt file under well-known subfolder', () => {
     return frisby.get(URL + '/.well-known/security.txt')
       .expect('status', 200)
   })

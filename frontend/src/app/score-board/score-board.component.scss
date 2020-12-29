@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -54,6 +54,10 @@ mat-table {
   margin-left: 8px;
 }
 
+.vulnerability-mitigation-button {
+  margin-left: 8px;
+}
+
 .fill-remaining-space {
   flex: 1 1 auto;
 }
@@ -68,4 +72,9 @@ mat-table {
     font-style: normal;
     color: rgb(84, 110, 122);
   }
+}
+
+.backupButton {
+  margin-left: 15px;
+  align-self: center;
 }

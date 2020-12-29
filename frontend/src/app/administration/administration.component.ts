@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -100,5 +100,9 @@ export class AdministrationComponent implements OnInit {
         id: id
       }
     })
+  }
+
+  times (numberOfTimes: number) {
+    return Array(numberOfTimes).fill('★')
   }
 }

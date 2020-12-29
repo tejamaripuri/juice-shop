@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -17,9 +17,9 @@ module.exports.addMemory = function addMemory () {
   }
 }
 
-module.exports.getMemory = function getMemory () {
+module.exports.getMemories = function getMemories () {
   return async (req, res, next) => {
-    const memories = await models.Memory.findAll()
+    const memories = await models.Memory.findAll({ include: [models.User] })
     res.status(200).json({ status: 'success', data: memories })
   }
 }

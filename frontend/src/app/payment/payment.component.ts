@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -185,13 +185,17 @@ export class PaymentComponent implements OnInit {
         this.snackBarHelperService.open(err.error?.error, 'errorBar')
       })
     } else if (this.mode === 'deluxe') {
-      this.userService.upgradeToDeluxe(this.paymentMode).subscribe((data) => {
+      this.userService.upgradeToDeluxe(this.paymentMode, this.paymentId).subscribe((data) => {
         localStorage.setItem('token', data.token)
         this.cookieService.set('token', data.token)
         this.ngZone.run(() => this.router.navigate(['/deluxe-membership']))
       }, (err) => console.log(err))
     } else {
       if (this.paymentMode === 'wallet') {
+        if (this.walletBalance < this.totalPrice) {
+          this.snackBarHelperService.open('INSUFFICIENT_WALLET_BALANCE', 'errorBar')
+          return
+        }
         sessionStorage.setItem('paymentId', 'wallet')
       } else {
         sessionStorage.setItem('paymentId', this.paymentId)

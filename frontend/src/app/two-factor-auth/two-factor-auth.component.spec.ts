@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -25,7 +25,7 @@ import { MatDividerModule } from '@angular/material/divider'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatTooltipModule } from '@angular/material/tooltip'
 
-import { QRCodeModule } from 'angular2-qrcode'
+import { QRCodeModule } from 'anuglar2-qrcode'
 
 describe('TwoFactorAuthComponent', () => {
   let component: TwoFactorAuthComponent

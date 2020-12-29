@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2014-2020 Bjoern Kimminich.
+  ~ Copyright (c) 2014-2021 Bjoern Kimminich.
   ~ SPDX-License-Identifier: MIT
   -->
 
@@ -191,6 +191,15 @@
     </i>
     <span class="menu-text truncate">
       {{"NAV_COMPLAIN" | translate}}
+    </span>
+  </a>
+  <a mat-list-item *ngIf="isLoggedIn()" routerLink="/chatbot" (click)="onToggleSidenav();"
+     aria-label="Go to chatbot page">
+     <i class="material-icons">
+      chat
+    </i>
+    <span class="menu-text truncate">
+      {{"SECTION_SUPPORT_CHAT" | translate}}
     </span>
   </a>
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -7,7 +7,7 @@ import {
   waitForInputToHaveValue,
   waitForElementToGetClicked,
   waitInMs,
-  waitForAngularRouteToBeVisited, waitForLogOut, waitForInputToNotHaveValue
+  waitForAngularRouteToBeVisited, waitForLogOut, waitForInputToNotHaveValueAndNotBeEmpty
 } from '../helpers/helpers'
 import { ChallengeInstruction } from '../'
 
@@ -25,6 +25,7 @@ export const LoginJimInstruction: ChallengeInstruction = {
       text:
         "Let's try if we find a way to log in with Jim's user account. To begin, go to the _Login_ page via the _Account_ menu.",
       fixture: 'app-navbar',
+      fixtureAfter: true,
       unskippable: true,
       resolved: waitForAngularRouteToBeVisited('login')
     },
@@ -49,13 +50,13 @@ export const LoginJimInstruction: ChallengeInstruction = {
     {
       text:
         'Go back to the product list and click on some to open their details dialog which also hold the user reviews.',
-      fixture: '#searchQuery',
+      fixture: '.fill-remaining-space',
       resolved: waitForAngularRouteToBeVisited('search')
     },
     {
       text:
         'Once you found a user review by Jim and learned his email, go to the _Login_ screen.',
-      fixture: '#searchQuery',
+      fixture: '.fill-remaining-space',
       unskippable: true,
       resolved: waitForAngularRouteToBeVisited('login')
     },
@@ -69,7 +70,7 @@ export const LoginJimInstruction: ChallengeInstruction = {
       text: "Now put anything in the **password field**. Let's assume we don't know it yet, even if you happen to already do.",
       fixture: '#password',
       unskippable: true,
-      resolved: waitForInputToNotHaveValue('#password', 'ncc-1701')
+      resolved: waitForInputToNotHaveValueAndNotBeEmpty('#password', 'ncc-1701')
     },
     {
       text: 'Press the _Log in_ button.',

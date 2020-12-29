@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -24,6 +24,7 @@ interface Config {
     theme: string
     showVersionNumber: boolean
     showGitHubLinks: boolean
+    localBackupEnabled: boolean
     numberOfRandomFakeUsers: number
     altcoinName: string
     privacyContactEmail: string
@@ -75,6 +76,7 @@ interface Config {
   challenges: {
     showSolvedNotifications: boolean
     showHints: boolean
+    showMitigations: boolean
     restrictToTutorialsFirst: boolean
     safetyOverride: boolean
     overwriteUrlForProductTamperingChallenge: string

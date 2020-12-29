@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -159,6 +159,28 @@ describe('/api/BasketItems/:id', () => {
         })
           .expect('status', 500)
           .expect('json', { message: 'internal error', errors: ['sequelize.ValidationErrorItem is not a constructor'] })
+      })
+  })
+
+  it('PUT update basket ID of basket item without basket ID', () => {
+    return frisby.post(API_URL + '/BasketItems', {
+      headers: authHeader,
+      body: {
+        ProductId: 8,
+        quantity: 8
+      }
+    })
+      .expect('status', 200)
+      .then(({ json }) => {
+        expect(json.data.BasketId).toBeUndefined()
+        return frisby.put(API_URL + '/BasketItems/' + json.data.id, {
+          headers: authHeader,
+          body: {
+            BasketId: 3
+          }
+        })
+          .expect('status', 200)
+          .expect('json', 'data', { BasketId: 3 })
       })
   })
 

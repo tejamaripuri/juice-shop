@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -54,5 +54,13 @@ describe('/ftp', () => {
     })
 
     protractor.expect.challengeSolved({ challenge: 'Misplaced Signature File' })
+  })
+
+  describe('challenge "nullByteChallenge"', () => {
+    it('should be able to access file other than Markdown or PDF in /ftp with poison null byte attack', () => {
+      browser.driver.get(browser.baseUrl + '/ftp/encrypt.pyc%2500.md')
+    })
+
+    protractor.expect.challengeSolved({ challenge: 'Poison Null Byte' })
   })
 })

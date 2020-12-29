@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -263,13 +263,13 @@ function typosquattingNpmChallenge () {
 }
 
 function typosquattingAngularChallenge () {
-  models.Feedback.findAndCountAll({ where: { comment: { [Op.like]: '%ng2-bar-rating%' } } }
+  models.Feedback.findAndCountAll({ where: { comment: { [Op.like]: '%anuglar2-qrcode%' } } }
   ).then(({ count }) => {
     if (count > 0) {
       utils.solve(challenges.typosquattingAngularChallenge)
     }
   })
-  models.Complaint.findAndCountAll({ where: { message: { [Op.like]: '%ng2-bar-rating%' } } }
+  models.Complaint.findAndCountAll({ where: { message: { [Op.like]: '%anuglar2-qrcode%' } } }
   ).then(({ count }) => {
     if (count > 0) {
       utils.solve(challenges.typosquattingAngularChallenge)

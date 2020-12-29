@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2020 Bjoern Kimminich.
+ * Copyright (c) 2014-2021 Bjoern Kimminich.
  * SPDX-License-Identifier: MIT
  */
 
@@ -9,10 +9,12 @@ module.exports = (sequelize, { STRING, INTEGER, BOOLEAN, NUMBER }) => {
     key: STRING,
     name: STRING,
     category: STRING,
+    tags: STRING,
     description: STRING,
     difficulty: INTEGER,
     hint: STRING,
     hintUrl: STRING,
+    mitigationUrl: STRING,
     solved: BOOLEAN,
     disabledEnv: STRING,
     tutorialOrder: NUMBER
